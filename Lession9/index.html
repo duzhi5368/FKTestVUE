@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 8</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <p>{{ floatValue }}元</p>
+            <p>{{ USDlloar }}美元</p>
+            <button @click="btnClick(100)">加100块</button>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    floatValue: 513,
+                    USDlloar: 0,
+                },
+                watch: {    
+                    // 当 floatValue 的值发生变化，会执行该变量的watch函数
+                    floatValue: function(newVal, oldVal){
+                        console.log(oldVal, '->', newVal);
+                        this.USDlloar = Math.round(this.floatValue / 7.1);
+                    }
+                },
+                methods:{
+                    btnClick: function(newVal){
+                        this.floatValue += newVal;
+                    }
+                }
+            });
+
+            // 进行初始化,这个赋值也会激活watch
+            myApp.floatValue = 515;
+        </script>
+    </body>
+</html>

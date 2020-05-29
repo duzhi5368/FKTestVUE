@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 17</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <h1>用户注册</h1>
+            <div>
+                <label for="username">用户：</label>
+                <input type="text" id="username" v-model.lazy="username" @change="checkUsername">
+                <span v-if="isUsernameOK">可以注册</span>
+            </div>
+            <div>
+                <label for="age">年龄：</label>
+                <input type="number" id="age" v-model.number="age">
+            </div>
+            <div>
+                <label for="content">个人看法: </label>
+                <textarea id="content" v-model.trim="content" cols="55" rows="8"></textarea>
+            </div>
+
+            <h4>信息提示</h4>
+            <p>{{username}}</p>
+            <p>{{age}}</p>
+            <p>{{content}}</p>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    username: "",
+                    isUsernameOK: false,
+                    age: "",
+                    content: ""
+                },
+                methods:{
+                    checkUsername: function(){
+
+                        if(this.username.length <= 0){
+                            this.isUsernameOK = false;
+                        }else{
+                            this.isUsernameOK = true;
+                        }
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

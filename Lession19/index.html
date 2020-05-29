@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 18</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <today-weather></today-weather>
+
+            <another-weather></another-weather>
+        </div>
+        <script>
+            // 注册一个组件，注意：该组件必须声明在 new Vue 之前。
+            Vue.component('today-weather',{
+                template: '<div>天气预报模板</div>'
+            });
+            // 可复用的局部组件
+            var anotherWeatherComponent = {
+                template: '<div>另外一个可复用的天气预报模板</div>'
+            };
+            var myApp = new Vue({
+                el: '#myApp',
+                components:{
+                    'another-weather': anotherWeatherComponent
+                },
+            });
+        </script>
+    </body>
+</html>

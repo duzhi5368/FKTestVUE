@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 9</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <p>{{ floatValue }}元</p>
+            <p>{{ USDlloar }}美元</p>
+            <p>{{ USDlloarSetter }}美元</p>
+            <button @click="btnClick(100)">加价100元</button>
+            <button @click="btnClickUSD(100)">加价100刀</button>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    floatValue: 513,
+                },
+                computed:{
+                    // 这种函数方式，只适合单项计算，不适合反向影响
+                    USDlloar: function(){
+                        return Math.round(this.floatValue / 7.1);
+                    },
+
+                    // 这个对象方式，可以双向影响。在 get, set 时均会触发事件
+                    USDlloarSetter: {
+                        get: function(){
+                            return Math.round(this.floatValue / 7.1);
+                        },
+                        set: function(value){
+                            this.floatValue = Math.round(value * 7.1);
+                        }
+                    },
+                },
+                methods:{
+                    btnClick: function(newVal){
+                        this.floatValue += newVal;
+                    },
+                    btnClickUSD: function(newVal){
+                        this.USDlloarSetter += newVal;
+                    },
+                }
+            });
+        </script>
+    </body>
+</html>

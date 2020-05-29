@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 15</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <input id="myInput" v-on:keyup="myInputKeyup($event)">
+            <button id="myButton" @click="btnClick($event)">ok</button>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                },
+                methods:{
+                        myInputKeyup: function(event){
+                            this.debugLog(event);
+                        },
+                        btnClick: function(event){
+                            this.debugLog(event);
+                        },
+                        debugLog: function(event){
+                            console.log("组件类型：", event.srcElement.tagName,
+                            "组件ID：",     event.srcElement.id,
+                            "组件数据：",   event.srcElement.innerHTML,
+                            "用户按键：",    event.key? event.key: "无")
+                        }
+                    }
+            });
+        </script>
+    </body>
+</html>

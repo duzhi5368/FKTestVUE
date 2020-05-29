@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 4</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <p>你最喜欢的游戏是: {{myGame}}</p>
+            <button v-on:click="btnClick('游戏1')">游戏1</button>
+            <button v-on:click="btnClick('游戏2')">游戏2</button>
+            <button @click="btnClick('游戏3')">游戏3</button>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    myGame: "默认游戏名"
+                }, 
+                methods:{
+                    btnClick: function(gameName){
+                        this.myGame = gameName;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

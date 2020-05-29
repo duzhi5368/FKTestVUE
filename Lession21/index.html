@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 20</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <text-result :score="50"></text-result>
+            <text-result :score="70"></text-result>
+            <text-result :score="100"></text-result>
+            <hr/>
+            <div>请输入名字: <input v-model="yourname"></div>
+            <say-hello :pname="yourname">
+        </div>
+        <script>
+            Vue.component('text-result', {
+                props: ['score'],   // 这里是接数据
+                template: '<div><strong>{{score}}分 {{result}}</strong></div>',
+                computed:{          // 顺道复习conputed
+                    result: function(){
+                        var strResult = "未知";
+                        if(this.score < 60){
+                            strResult = "不及格";
+                        }else if(this.score >= 80){
+                            strResult = "成绩很好";
+                        }else{
+                            strResult = "马马虎虎";
+                        }
+                        return strResult;
+                    }
+                }
+            });
+            Vue.component('say-hello',{
+                props: ['pname'],   // 这里接的是变量
+                template: '<div><strong> hello, {{pname}} </strong></div>'
+            });
+            var myApp = new Vue({
+                el: '#myApp',
+                data:{
+                    yourname: "freeknight"
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 23</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <say-to pname="小A">你吃了没</say-to>
+            <say-to pname="小B">你饿了没</say-to>
+            <say-to pname="小C">你给他们做饭吧</say-to>
+
+            <nba-all-stars c="奥尼尔" pf="加内特">
+                <span slot="sf">皮克</span>
+                <span slot="sg">丘吉尔</span>
+                <span slot="pg">特朗普</span>
+            </nba-all-stars>
+        </div>
+        <script>
+            Vue.component('say-to',{
+                props: ['pname'],
+                template: '<div> 你好, {{pname}}! '
+                    + '<slot></slot>'       // 这里，将上面标签中的内容"你吃了没""你饿了没"等，嵌入到组件内容中了
+                    + '</div>',
+            });
+            Vue.component('nba-all-stars',{
+                props: ['c', 'pf'],         // 这是普通组件属性
+                template: '<div>'
+                    +'<p>中锋: {{c}}</p>'
+                    +'<p>大前: {{pf}}</p>'
+                    +'<p>小前: <slot name="sf"></slot></p>' // 带标签名的slot
+                    +'<p>分卫: <slot name="sg"></slot></p>'
+                    +'<p>控卫: <slot name="pg"></slot></p>'
+                    +'</div>',
+            });
+            var myApp = new Vue({
+                el: '#myApp',
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 21</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <show-member-info name="freeknight" :age="18" :detail="{address:'singaporo', language:'日语'}">
+            </show-member-info>
+        </div>
+        <script>
+            Vue.component('show-member-info', {
+                props:{
+                    name: {
+                        type: String,
+                        required: true,                 // 该组件的该参数项为强制存在
+                    },
+                    age:{
+                        type: Number,
+                        validator: function(value){     // 有效性校验
+                            return value >= 0 && value <= 100;
+                        }
+                    },
+                    detail:{
+                        type: Object,
+                        default: function(){            // 默认值
+                            return {
+                                address: 'NoPlace',
+                                language: '英语'
+                            }
+                        }
+                    }
+                },
+                template: '<div>名字: {{this.name}} <br/>'
+                        + '年龄: {{this.age}} <br/>'
+                        + '地址: {{this.detail.address}} <br/>'
+                        + '语言: {{this.detail.language}} </div>'
+            });
+            var myApp = new Vue({
+                el: '#myApp',
+            });
+        </script>
+    </body>
+</html>

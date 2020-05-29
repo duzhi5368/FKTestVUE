@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 16</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <!-- 注意：这里都是双向绑定。即，若修改了input中的数据，message变量值也发生了改变 -->
+            
+            <!-- 输入框 -->
+            <input type="text" v-model="message" placeholder="没东西">
+            <p>Message 变量值是 {{message}}</p>
+            <div></div>
+            <!-- 多选框 -->
+            <input type="checkbox" id="cb1" value="第一项的值" v-model="checkboxValue">
+            <label for="cb1">第一项</label>
+            <input type="checkbox" id="cb2" value="第二项的值" v-model="checkboxValue">
+            <label for="cb2">第二项</label>
+            <input type="checkbox" id="cb3" value="第三项的值" v-model="checkboxValue">
+            <label for="cb3">第三项</label>
+            <p>checkboxValue 变量值是 {{checkboxValue}}</p>
+            <div></div>
+            <!-- 单选框-->
+            <input type="radio" id="r1" value="第1项的值" v-model="singleCheckboxValue">
+            <label for="r1">第1项</label>
+            <input type="radio" id="r2" value="第2项的值" v-model="singleCheckboxValue">
+            <label for="r2">第2项</label>
+            <input type="radio" id="r3" value="第3项的值" v-model="singleCheckboxValue">
+            <label for="r3">第3项</label>
+            <p>singleCheckboxValue 变量值是 {{singleCheckboxValue}}</p>
+            <div></div>
+            <!-- 单选下拉框 -->
+            <select v-model="selectValue">
+                <option v-for="question in questionsValues">{{question}}</option>
+            </select>
+            <p>selectValue 变量值是 {{selectValue}}</p>
+            <div></div>
+            <!-- 复选下拉框 -->
+            <select v-model="selectValues" multiple style="height: 70px;">
+                <option v-for="question in questionsValues">{{question}}</option>
+            </select>
+            <p>selectValues 变量值是 {{selectValues}}</p>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    message: "Hello, world!",
+                    checkboxValue: [],
+                    singleCheckboxValue: "",
+                    selectValue: "",
+                    selectValues: [],
+                    questionsValues :[
+                        "问题1",
+                        "问题2",
+                        "问题3",
+                        "问题4",
+                        "问题5",
+                    ]
+                }
+            });
+        </script>
+    </body>
+</html>

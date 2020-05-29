@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 13</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <h1 v-show="result">这个 h1 标签永久存在。</h1>
+            <button @click="btnClick">修改可见</button>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    result: true,
+                },
+                methods:{
+                    btnClick: function(){
+                        this.result = !this.result;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

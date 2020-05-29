@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 14</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <h3>js对象迭代</h3>
+            <div v-for="(value, key) in games">{{key}}:{{value}}</div>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    isCanBeSeen: false,
+                    games:{
+                        title: "名字",
+                        price: 200,
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

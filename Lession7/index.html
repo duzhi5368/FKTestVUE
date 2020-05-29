@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 6</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <p>{{ message }}</p>
+            <p>{{ message | toupper }}</p>
+            <p>{{ floatValue }}</p>
+            <p>{{ floatValue | topercent }}</p>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    message: "Hello, world!",
+                    floatValue: 0.3,
+                },
+                filters:{
+                    toupper: function(value){
+                        return value.toUpperCase();
+                    },
+                    topercent: function(value){
+                        return value * 100 + "%";
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

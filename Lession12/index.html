@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 11</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <link href="myCss.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id='myApp'>
+            <!-- 在 ：冒号后面是要绑定的属性，这里我们绑定的是 class 类-->
+            <!-- 当isActive变量为true时，本 div 的class则为 active, 受到css影响，字体为红色 -->
+            <!-- 当isActive变量为flase时，本 div 的class则为 空, 不受到css影响，字体为默认黑色 -->
+            <div v-bind:class="myclass"> 红色文本1 </div>
+            <!-- 可以简写为 :attribute -->
+            <div :class="myclass"> 红色文本2 </div>
+
+            <button @click="btnClick">更变状态</button>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    myclass:{
+                        active: true,
+                        bigfont: true,
+                    }
+                },
+                methods:{
+                    btnClick: function(){
+                        this.myclass.active = (!this.myclass.active);
+                        this.myclass.bigfont = (!this.myclass.bigfont);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

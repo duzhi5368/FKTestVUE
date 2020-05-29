@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 22</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <add-method :a="6" :b="12" v-on:add_event="getAddResult"></add-method>
+            <hr/>
+            <h3>{{result}}</h3>
+        </div>
+        <script>
+            Vue.component('add-method',{
+                props: ['a', 'b'],
+                // 按钮，点击事件为add
+                template: '<div><button v-on:click="add">加</button></div>',
+                methods:{
+                    add: function(){
+                        var value = 0;
+                        value = this.a + this.b;
+                        console.log(value);
+                        // 提交一个add_event事件
+                        this.$emit( 'add_event', { 
+                            result: value 
+                        });
+                    }
+                }
+            });
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    result: 0
+                },
+                methods:{
+                    getAddResult: function(val){
+                        this.result = val.result;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 7</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <p>{{ floatValue }}元</p>
+            <p>{{ USDlloar }}美元</p>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    floatValue: 513,
+                },
+                computed:{
+                    USDlloar: function(){
+                        return Math.round(this.floatValue / 7.1);
+                    },
+                }
+            });
+        </script>
+    </body>
+</html>

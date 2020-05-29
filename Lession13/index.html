@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 12</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <h1 v-if="result == 0">无成绩</h1>
+            <h1 v-else-if="result >= 80">考的很好</h1>
+            <h1 v-else-if="result < 60">没及格</h1>
+            <h1 v-else>考的一般</h1>
+            <button @click="btnClick">考试成绩</button>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    result: 0,
+                },
+                methods:{
+                    btnClick: function(){
+                        this.result = Math.round(Math.random() * 100);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

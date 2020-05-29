@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>freeknight Vue test 2</title>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id='myApp'>
+            <h3>游戏列表</h3>
+            <div v-if="isCanBeSeen">可控制隐藏项</div>
+            <ol>
+                <li v-for="(game, index) in games">{{index+1}}:{{game.title}} / {{game.price}}元</li>
+            </ol>
+        </div>
+        <script>
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    isCanBeSeen: false,
+                    games:[
+                        {title:"游戏名1", price:200},
+                        {title:"游戏名2", price:300},
+                        {title:"游戏名3", price:500},
+                    ],
+                }
+            });
+        </script>
+    </body>
+</html>
